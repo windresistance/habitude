@@ -1,0 +1,20 @@
+{
+  "name": "habitude",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.12.3",
+    "ejs": "^2.3.1",
+    "express": "^4.12.3",
+    "later": "^1.1.6",
+    "moment": "^2.10.2",
+    "mongoose": "^3.8.27",
+    "node-restful": "^0.1.18"
+  }
+}
