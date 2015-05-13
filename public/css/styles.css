@@ -22,3 +22,16 @@ body {
 		padding: 0 8px;
 		background-color: limegreen;
 	}
+
+	li {
+		list-style-type: none;
+		margin-bottom: 8px;
+	}
+		li a {
+			text-decoration: none;
+			color: blue;
+		}
+		li a[data-task] {
+			margin-right: 12px;
+			color: red;
+		}

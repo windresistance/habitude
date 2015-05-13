@@ -8,8 +8,8 @@ $(function(){
 		var content, task;
 		for (var i in tasks) {
 			task = tasks[i];
-			content = '<a href="/tasks/'+task._id+'">'+task.name+'</a> '+
-				'<a href="#" data-task="'+task._id+'">X</a>';
+			content = '<a href="#" data-task="'+task._id+'">X</a>' + 
+				'<a href="/tasks/'+task._id+'">'+task.name+'</a> ';
 			list.push($('<li>', { html: content }));
 		}
 		$('.task-list').append(list);
