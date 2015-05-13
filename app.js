@@ -1,23 +1,25 @@
-// Dependencies
+/* Dependencies */
 var express = require('express');
 var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
 
-// MongoDB
+/* MongoDB */
 mongoose.connect('mongodb://localhost/habitude');
+var Task = require('./models/task');
 
-// Express
+/* Express */
 var app = express();
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+/* Use EJS engine */
+// app.engine('html', require('ejs').renderFile);
+// app.set('view engine', 'html');
 
-// Routes
-app.use('/', require('./routes/index'));
-app.use('/api', require('./routes/api'));
+/* Serve static files */
+app.use(express.static('public'));
 
-// Start server
-app.listen(3000);
-console.log('Express server running Habitude on port 3000!');
+/* Routes */
+app.use('/tasks', require('./routes/tasks'));
+
+/* Start server */
+app.listen(3000, function() {
+	console.log('Express server running Habitude on port 3000!');
+});

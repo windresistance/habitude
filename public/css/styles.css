@@ -1,0 +1,15 @@
+* {
+	font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+	color: #222222;
+}
+body {
+	width: 50%;
+	margin: 80px auto;
+	background-color: #eee;
+}
+	section {
+		display: inline-block;
+		vertical-align: top;
+		margin-right: 40px;
+	}
+	
