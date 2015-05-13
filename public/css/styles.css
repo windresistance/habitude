@@ -1,5 +1,5 @@
 * {
-	font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+	font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
 	color: #222222;
 }
 body {
@@ -7,9 +7,18 @@ body {
 	margin: 80px auto;
 	background-color: #eee;
 }
-	section {
-		display: inline-block;
-		vertical-align: top;
-		margin-right: 40px;
+	h1 {
+		font-size: 28px;
 	}
-	
+	input {
+		height: 32px;
+		margin: 0;
+		padding: 0;
+		border: none;
+		outline: none;
+	}
+	input[type="submit"] {
+		-webkit-appearance: button;
+		padding: 0 8px;
+		background-color: limegreen;
+	}
