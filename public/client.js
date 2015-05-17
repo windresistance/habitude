@@ -51,10 +51,9 @@ $(function(){
 
 	// edit task
 	$('.task-list').on('dblclick', 'li', function() {
-	// $('.task-list').on('click', 'a[data-task-edit]', function(event) {
 		var $this = $(this);
 
-		var task_id = $this.id;
+		var task_id = $this.attr('id');
 		var task_name = $this.children('.name').text();
 
 		content = '<a href="#" data-task-del="'+task_id+'">X</a>' + 

@@ -11,6 +11,7 @@ body {
 		font-size: 28px;
 	}
 	form input {
+		width: 240px;
 		height: 32px;
 		padding: 0;
 		padding-left: 4px;
@@ -18,10 +19,13 @@ body {
 		outline: none;
 	}
 	form input[type="submit"] {
-		-webkit-appearance: button;
 		width: 136px;
 		padding: 0 8px;
 		background-color: limegreen;
+		color: white;
+	}
+	form input[type="submit"]:hover {
+		opacity: 0.7;
 	}
 	ul {
 		padding: 0;
