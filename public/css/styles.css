@@ -1,32 +1,45 @@
 * {
 	font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
-	color: #222222;
+	color: #2c3e50;
 }
 body {
 	width: 70%;
 	margin: 80px auto;
-	background-color: #eee;
+	background-color: #ecf0f1;
 }
 	h1 {
 		font-size: 28px;
 	}
-	form input {
-		width: 240px;
-		height: 32px;
-		padding: 0;
-		padding-left: 4px;
-		border: none;
-		outline: none;
+	form {
+		display: inline-block;
+		font-size: 0;
+		box-shadow: 1px 2px 2px gray;
+		border-radius: 2px;
 	}
-	form input[type="submit"] {
-		width: 136px;
-		padding: 0 8px;
-		background-color: limegreen;
-		color: white;
-	}
-	form input[type="submit"]:hover {
-		opacity: 0.7;
-	}
+		form input {
+			font-size: 16px;
+			width: 240px;
+			height: 32px;
+			padding: 0;
+			padding-left: 4px;
+			border: none;
+			outline: none;
+			border-top-left-radius: 2px;
+			border-bottom-left-radius: 2px;
+		}
+		form input[type="submit"] {
+			width: auto;
+			padding-left: 8px;
+			padding-right: 8px;
+			background-color: #2ecc71;
+			color: white;
+			border-radius: 0;
+			border-top-right-radius: 2px;
+			border-bottom-right-radius: 2px;
+		}
+		form input[type="submit"]:hover {
+			opacity: 0.7;
+		}
 	ul {
 		padding: 0;
 	}
@@ -34,36 +47,49 @@ body {
 			list-style-type: none;
 			margin-bottom: 8px;
 			padding: 8px;
-			width: 380px;
-			height: 32px;
-			line-height: 32px;
+			width: 360px;
+			height: 19px;
+			line-height: 19px;
 			background-color: white;
-			border-bottom: 2px solid gray;
-			border-right: 1px solid gray;
+			border-radius: 2px;
+			box-shadow: 1px 2px 2px gray;
 		}
-			li a, input {
+			li .drag {
+				display: inline-block;
 				margin-right: 12px;
 			}
-			li .name, input {
+			li .drag:hover {
+				cursor: move;
+			}
+			li .name {
 				display: inline-block;
+				width: 309px;
+				margin-right: 12px;
+			}
+			li input {
+				display: inline-block;
+				border: 0;
+				outline: 0;
+				margin: 0;
+				padding: 0;
 				width: 240px;
+				margin-right: 6px;
+				background-color: #e0e0e0;
 			}
 			li a {
 				text-decoration: none;
 			}
-			li a[data-task-del] {
-				color: red;
+			li a[data-task-save], li a[data-task-cancel] {
+				font-size: 12px;
 			}
 			li a[data-task-save] {
-				color: green;
+				color: #27ae60;
 			}
-			li a[data-task-edit], li a[data-task-cancel] {
-				color: black;
+			li a[data-task-cancel] {
+				color: #c0392b;
 			}
-			li a[data-task-edit] {
-				margin-left: 60px;
+			li a[data-task-del] {
+				float: right;
+				color: #c0392b;
 			}
-			li input {
-				background-color: #eee;
-				border-bottom: 1px solid lightgray;
-			}
+

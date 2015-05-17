@@ -1,9 +1,10 @@
 $(function(){
 	// generate task content function
 	function generateListContent(task) {
-		return '<a href="#" data-task-del="'+task._id+'">X</a>' + 
-			   // '<a href="/tasks/'+task._id+'" class="name">'+task.name+'</a>' + 
-			   '<span class="name">'+task.name+'</span>';
+		return '<span class="drag">&#8597</span>'+
+			   // '<a href="/tasks/'+task._id+'" class="name">'+task.name+'</a>'+
+			   '<span class="name">'+task.name+'</span>'+
+			   '<a href="#" data-task-del="'+task._id+'">X</a>';
 	}
 
 	// add task to list function
@@ -13,7 +14,7 @@ $(function(){
 		for (var i in tasks) {
 			task = tasks[i];
 			content = generateListContent(task);
-			list.push('<li id="' + task._id + '">' + content + '</li>');
+			list.push('<li id="'+task._id+'">'+content+'</li>');
 		}
 		$('.task-list').append(list);
 	}
@@ -56,10 +57,11 @@ $(function(){
 		var task_id = $this.attr('id');
 		var task_name = $this.children('.name').text();
 
-		content = '<a href="#" data-task-del="'+task_id+'">X</a>' + 
-				  '<input name="name" value="'+task_name+'" data-task-name="'+task_id+'">' + 
-				  '<a href="#" data-task-save="'+task_id+'">save</a>' + 
-				  '<a href="#" data-task-cancel="'+task_id+'">cancel</a>';
+		content = '<span class="drag">&#8597</span>'+
+				  '<input name="name" value="'+task_name+'" data-task-name="'+task_id+'">'+
+				  '<a href="#" data-task-save="'+task_id+'">save</a>|'+
+				  '<a href="#" data-task-cancel="'+task_id+'">cancel</a>'+
+				  '<a href="#" data-task-del="'+task_id+'">X</a>';
 		$this.html(content);
 
 		$('input[value="'+task_name+'"]').focus();  // move cursor to input
