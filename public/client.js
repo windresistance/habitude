@@ -1,22 +1,25 @@
 $(function(){
-	// render all tasks on initial page load
-	$.get('/tasks', appendToList);
+	// generate task content function
+	function generateListContent(task) {
+		return '<a href="#" data-task-del="'+task._id+'">X</a>' + 
+			   // '<a href="/tasks/'+task._id+'" class="name">'+task.name+'</a>' + 
+			   '<span class="name">'+task.name+'</span>';
+	}
 
-	// add task to list
+	// add task to list function
 	function appendToList(tasks) {
 		var list = [];
 		var content, task;
 		for (var i in tasks) {
 			task = tasks[i];
-
-			content = '<a href="#" data-task-del="'+task._id+'">X</a>' + 
-					  '<a href="/tasks/'+task._id+'" class="name">'+task.name+'</a>' + 
-					  '<a href="#" data-task-edit="'+task._id+'">edit</a>';
-			// list.push($('<li>', { html: content }));
+			content = generateListContent(task);
 			list.push('<li id="' + task._id + '">' + content + '</li>');
 		}
 		$('.task-list').append(list);
 	}
+
+	// render all tasks on initial page load
+	$.get('/tasks', appendToList);
 
 	// create task
 	$('form').on('submit', function(event) {
@@ -36,60 +39,52 @@ $(function(){
 
 	// delete task
 	$('.task-list').on('click', 'a[data-task-del]', function(event) {
-		var target = $(event.currentTarget);
+		var $this = $(this);
 
 		$.ajax({
 			type: 'DELETE',
-			url: '/tasks/'+target.data('task-del')
+			url: '/tasks/'+$this.data('task-del')
 		}).done(function() {
-			target.parents('li').remove();
+			$this.parents('li').remove();
 		});
 	});
 
 	// edit task
-	$('.task-list').on('click', 'a[data-task-edit]', function(event) {
-		var target = $(event.currentTarget);
-		var task_id = target.data('task-edit');
-		var task_name = target.siblings('.name').text();
+	$('.task-list').on('dblclick', 'li', function() {
+	// $('.task-list').on('click', 'a[data-task-edit]', function(event) {
+		var $this = $(this);
+
+		var task_id = $this.id;
+		var task_name = $this.children('.name').text();
 
 		content = '<a href="#" data-task-del="'+task_id+'">X</a>' + 
 				  '<input name="name" value="'+task_name+'" data-task-name="'+task_id+'">' + 
 				  '<a href="#" data-task-save="'+task_id+'">save</a>' + 
 				  '<a href="#" data-task-cancel="'+task_id+'">cancel</a>';
-		target.parent().html(content);
-		
+		$this.html(content);
+
 		$('input[value="'+task_name+'"]').focus();  // move cursor to input
 	});
 
 	// update task
 	$('.task-list').on('click', 'a[data-task-save]', function(event) {
-		var target = $(event.currentTarget);
-		var task_name =  target.siblings('input').val();
+		var $this = $(this);
+		var task_name =  $this.siblings('input').val();
 
 		$.ajax({
 			type: 'PUT',
-			url: '/tasks/'+target.data('task-save'),
+			url: '/tasks/'+$this.data('task-save'),
 			data: { name: task_name }
 		}).done(function(taskName) {
-			var task_id = target.data('task-save');
-
-			content = '<a href="#" data-task-del="'+task_id+'">X</a>' + 
-					  '<a href="/tasks/'+task_id+'" class="name">'+task_name+'</a>' + 
-					  '<a href="#" data-task-edit="'+task_id+'">edit</a>';
-
-			target.parent().html(content);
+			var content = generateListContent({ _id: $this.data('task-save'), name: $this.siblings('input').val() });
+			$this.parent().html(content);
 		});
 	});
 
-	// edit task cancel
+	// cancel edit task
 	$('.task-list').on('click', 'a[data-task-cancel]', function(event) {
-		var target = $(event.currentTarget);
-		var task_id = target.data('task-cancel');
-		var task_name = target.siblings('input').val();
-
-		content = '<a href="#" data-task-del="'+task_id+'">X</a>' + 
-				  '<a href="/tasks/'+task_id+'" class="name">'+task_name+'</a>' + 
-				  '<a href="#" data-task-edit="'+task_id+'">edit</a>';
-		target.parent().html(content);
+		var $this = $(this);
+		var content = generateListContent({ _id: $this.data('task-cancel'), name: $this.siblings('input').val() });
+		$this.parent().html(content);
 	});
 });
