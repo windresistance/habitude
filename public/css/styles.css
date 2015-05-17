@@ -10,15 +10,16 @@ body {
 	h1 {
 		font-size: 28px;
 	}
-	input {
+	form input {
 		height: 32px;
-		margin: 0;
 		padding: 0;
+		padding-left: 4px;
 		border: none;
 		outline: none;
 	}
-	input[type="submit"] {
+	form input[type="submit"] {
 		-webkit-appearance: button;
+		width: 140px;
 		padding: 0 8px;
 		background-color: limegreen;
 	}
@@ -39,13 +40,12 @@ body {
 			li a, input {
 				margin-right: 12px;
 			}
-			li input {
-				/*outline: 1px solid green;*/
-				border-bottom: 1px solid lightgray;
+			li .name, input {
+				display: inline-block;
+				width: 240px;
 			}
 			li a {
 				text-decoration: none;
-				color: navy;
 			}
 			li a[data-task-del] {
 				color: red;
@@ -55,4 +55,11 @@ body {
 			}
 			li a[data-task-edit], li a[data-task-cancel] {
 				color: black;
+			}
+			li a[data-task-edit] {
+				margin-left: 60px;
+			}
+			li input {
+				background-color: #eee;
+				border-bottom: 1px solid lightgray;
 			}
