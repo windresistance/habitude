@@ -19,7 +19,7 @@ body {
 	}
 	form input[type="submit"] {
 		-webkit-appearance: button;
-		width: 140px;
+		width: 136px;
 		padding: 0 8px;
 		background-color: limegreen;
 	}
