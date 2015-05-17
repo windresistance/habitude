@@ -1,8 +1,6 @@
 /* Dependencies */
 var express = require('express');
 var router = express.Router();
-var bodyParser = require('body-parser');
-var parseUrlencoded = bodyParser.urlencoded({ extended: true });
 
 var tasks = require('../controllers/tasks');
 
@@ -14,19 +12,24 @@ router.route('/')
 	})
 
 	// add new task
-	.post(parseUrlencoded, function(req, res) {
+	.post(function(req, res) {
 		tasks.create(req, res);
 	});
 
-router.route('/:_id')
+router.route('/:id')
 	// get task
-	.get(parseUrlencoded, function(req, res) {
+	.get(function(req, res) {
 		tasks.show(req, res);
 	})
 
 	// delete task
 	.delete(function(req, res) {
 		tasks.destroy(req, res);
+	})
+
+	// edit task
+	.put(function(req, res) {
+		tasks.update(req, res);
 	});
 
 module.exports = router;

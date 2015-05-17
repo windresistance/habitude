@@ -1,6 +1,8 @@
 /* Dependencies */
 var express = require('express');
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+var parseUrlencoded = bodyParser.urlencoded({ extended: true });
 
 /* MongoDB */
 mongoose.connect('mongodb://localhost/habitude');
@@ -15,6 +17,8 @@ var app = express();
 
 /* Serve static files */
 app.use(express.static('public'));
+
+app.use(parseUrlencoded);
 
 /* Routes */
 app.use('/tasks', require('./routes/tasks'));

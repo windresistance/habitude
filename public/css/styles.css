@@ -22,16 +22,37 @@ body {
 		padding: 0 8px;
 		background-color: limegreen;
 	}
-
-	li {
-		list-style-type: none;
-		margin-bottom: 8px;
+	ul {
+		padding: 0;
 	}
-		li a {
-			text-decoration: none;
-			color: blue;
+		li {
+			list-style-type: none;
+			margin-bottom: 8px;
+			padding: 8px;
+			width: 380px;
+			height: 32px;
+			line-height: 32px;
+			background-color: white;
+			border-bottom: 2px solid gray;
+			border-right: 1px solid gray;
 		}
-		li a[data-task] {
-			margin-right: 12px;
-			color: red;
-		}
+			li a, input {
+				margin-right: 12px;
+			}
+			li input {
+				/*outline: 1px solid green;*/
+				border-bottom: 1px solid lightgray;
+			}
+			li a {
+				text-decoration: none;
+				color: navy;
+			}
+			li a[data-task-del] {
+				color: red;
+			}
+			li a[data-task-save] {
+				color: green;
+			}
+			li a[data-task-edit], li a[data-task-cancel] {
+				color: black;
+			}
