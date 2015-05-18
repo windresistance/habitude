@@ -4,7 +4,8 @@ var mongoose = require('mongoose');
 var taskSchema = new mongoose.Schema({
 	listId: Number,  // for ordering tasks in a list
 	name: String,
-	points: Number
+	points: Number,
+	index: Number
 });
 
 mongoose.model('Task', taskSchema);

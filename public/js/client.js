@@ -88,4 +88,25 @@ $(function(){
 		var content = generateListContent({ _id: $this.data('task-cancel'), name: $this.siblings('input').val() });
 		$this.parent().html(content);
 	});
+
+	// reorder task
+	$('ul').sortable({
+		connectWith: "ul",  // all lists
+		stop: function(event, ui) {
+			var id;
+			$(this).children().each(function(index) {
+				id = $(this).children(index).context.id;
+
+				$.ajax({
+					type: 'PUT',
+					url: '/tasks/'+id,
+					data: { index: index }
+				}).done(function(taskPosition) {
+					// console.log(taskPosition);
+				});
+			});
+
+		}
+	});
+	$('ul').disableSelection();
 });
