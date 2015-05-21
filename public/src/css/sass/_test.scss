@@ -1,6 +1,8 @@
+$color: #2c3e50;
+
 * {
 	font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
-	color: #2c3e50;
+	color: $color;
 }
 body {
 	width: 70%;

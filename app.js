@@ -19,7 +19,8 @@ var app = express();
 // app.set('view engine', 'html');
 
 /* Serve static files */
-app.use(express.static('public'));
+app.use(express.static('public/dist'));
+app.use(require('morgan')('dev'));
 
 app.use(parseUrlencoded);
 
