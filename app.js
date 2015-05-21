@@ -27,6 +27,7 @@ app.use(parseUrlencoded);
 app.use('/tasks', require('./routes/tasks'));
 
 /* Start server */
-app.listen(3000, function() {
+var port = process.env.PORT || 3000;
+app.listen(port, function() {
 	console.log('Express server running Habitude on port 3000!');
 });
