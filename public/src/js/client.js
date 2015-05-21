@@ -2,8 +2,6 @@ $(function(){
 	// generate task content function
 	function generateListContent(task) {
 		return '<span class="name">'+task.name+'</span>'+
-			   // '<span class="drag">&#8597</span>'+  // dragable icon
-			   // '<a href="/tasks/'+task._id+'" class="name">'+task.name+'</a>'+  // link to view individual task
 			   '<a href="#" data-task-del="'+task._id+'">X</a>';
 	}
 
@@ -57,8 +55,7 @@ $(function(){
 		var task_id = $this.attr('id');
 		var task_name = $this.children('.name').text();
 
-		content = '<span class="drag">&#8597</span>'+
-				  '<input name="name" value="'+task_name+'" data-task-name="'+task_id+'">'+
+		content = '<input name="name" value="'+task_name+'" old="'+task_name+'" data-task-name="'+task_id+'">'+
 				  '<a href="#" data-task-save="'+task_id+'">save</a>|'+
 				  '<a href="#" data-task-cancel="'+task_id+'">cancel</a>'+
 				  '<a href="#" data-task-del="'+task_id+'">X</a>';
@@ -85,7 +82,7 @@ $(function(){
 	// cancel edit task
 	$('.task-list').on('click', 'a[data-task-cancel]', function(event) {
 		var $this = $(this);
-		var content = generateListContent({ _id: $this.data('task-cancel'), name: $this.siblings('input').val() });
+		var content = generateListContent({ _id: $this.data('task-cancel'), name: $this.siblings('input').attr('old') });
 		$this.parent().html(content);
 	});
 
