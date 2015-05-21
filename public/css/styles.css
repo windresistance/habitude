@@ -48,7 +48,6 @@ body {
 			margin-bottom: 8px;
 			padding: 8px;
 			width: 360px;
-			height: 19px;
 			line-height: 19px;
 			background-color: white;
 			border-radius: 2px;
@@ -63,8 +62,8 @@ body {
 			}
 			li .name {
 				display: inline-block;
-				width: 309px;
-				margin-right: 12px;
+				width: 340px;
+				/*margin-right: 12px;*/
 			}
 			li input {
 				display: inline-block;

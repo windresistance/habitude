@@ -1,9 +1,9 @@
 $(function(){
 	// generate task content function
 	function generateListContent(task) {
-		return '<span class="drag">&#8597</span>'+
-			   // '<a href="/tasks/'+task._id+'" class="name">'+task.name+'</a>'+
-			   '<span class="name">'+task.name+'</span>'+
+		return '<span class="name">'+task.name+'</span>'+
+			   // '<span class="drag">&#8597</span>'+  // dragable icon
+			   // '<a href="/tasks/'+task._id+'" class="name">'+task.name+'</a>'+  // link to view individual task
 			   '<a href="#" data-task-del="'+task._id+'">X</a>';
 	}
 
@@ -16,7 +16,7 @@ $(function(){
 			content = generateListContent(task);
 			list.push('<li id="'+task._id+'">'+content+'</li>');
 		}
-		$('.task-list').append(list);
+		$('.task-list').prepend(list);  // add new task to the beginning of the list
 	}
 
 	// render all tasks on initial page load
@@ -102,7 +102,7 @@ $(function(){
 					url: '/tasks/'+id,
 					data: { index: index }
 				}).done(function(taskPosition) {
-					// console.log(taskPosition);
+					// console.log(taskPosition);  // success
 				});
 			});
 
