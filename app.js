@@ -5,7 +5,10 @@ var bodyParser = require('body-parser');
 var parseUrlencoded = bodyParser.urlencoded({ extended: true });
 
 /* MongoDB */
-mongoose.connect('mongodb://localhost/habitude');
+var uristring = process.env.MONGOLAB_URI || 'mongodb://localhost/habitude';
+var options = { server: { socketOptions: { keepAlive: 1 } } };
+
+mongoose.connect(uristring, options);
 var Task = require('./models/task');
 
 /* Express */
